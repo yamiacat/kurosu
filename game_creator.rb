@@ -9,13 +9,19 @@ ten_games = random_games.take(10)
 random_game = random_games.take(1)
 
 def redact_game (game, number_exposed)
-  output_game = ["······", "······", "······", "······", "······", "······"]
+  output_game = ["◽◽◽◽◽◽", "◽◽◽◽◽◽", "◽◽◽◽◽◽", "◽◽◽◽◽◽", "◽◽◽◽◽◽", "◽◽◽◽◽◽"]
   i = 0
   until i == number_exposed
     x = rand(6)
     y = rand(6)
-    # character = game[0][x][y]
-    output_game[x][y] = game[0][x][y]
+
+    if (game[0][x][y] == "O")
+      output_game[x][y] = "🔘"
+    else
+      output_game[x][y] = "✖"
+    end
+
+    # output_game[x][y] = game[0][x][y]
     i += 1
   end
   return output_game
